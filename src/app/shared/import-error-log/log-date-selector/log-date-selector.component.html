@@ -1,0 +1,5 @@
+<mat-select (selectionChange)="onDateSelected($event)">
+  <mat-option *ngFor="let date of availableDates" [value]="date.value">
+    {{ date.label }}
+  </mat-option>
+</mat-select>
