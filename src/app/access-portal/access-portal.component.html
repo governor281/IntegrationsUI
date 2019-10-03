@@ -1,0 +1,61 @@
+<div class="grid-container">
+  <mat-grid-list cols="2" rowHeight="350px">
+    <mat-grid-tile [colspan]="2" [rowspan]="2">
+      <mat-card class="dashboard-card">
+        <mat-card-header>
+          <mat-card-title>
+            Suspended Items
+            <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu" xPosition="before">
+              <button mat-menu-item>Expand</button>
+              <button mat-menu-item>Remove</button>
+            </mat-menu>
+          </mat-card-title>
+          <uf-log-date-selector
+            [dateService]="accessService"
+            [callParams]="{ mthd: 'accessPortalGetSyncLogDates' }"
+            (dateSelectedEvent)="setExportDate($event)"
+          ></uf-log-date-selector>
+        </mat-card-header>
+        <mat-card-content class="dashboard-card-content">
+          <uf-suspended-items
+            [myService]="accessService"
+            [callParams]="{ mthd: 'accessPortalGetSuspendedItems' }"
+          ></uf-suspended-items>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+    <!-- <mat-grid-tile *ngFor="let card of cards | async" [colspan]="card.cols" [rowspan]="card.rows"> -->
+    <mat-grid-tile [colspan]="2" [rowspan]="2">
+      <mat-card class="dashboard-card">
+        <mat-card-header>
+          <mat-card-title>
+            Import error logs
+            <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu" xPosition="before">
+              <button mat-menu-item>Expand</button>
+              <button mat-menu-item>Remove</button>
+            </mat-menu>
+          </mat-card-title>
+          <uf-log-date-selector
+            [dateService]="accessService"
+            [callParams]="{ mthd: 'accessPortalGetSyncLogDates' }"
+            (dateSelectedEvent)="setExportDate($event)"
+          ></uf-log-date-selector>
+        </mat-card-header>
+        <mat-card-content class="dashboard-card-content">
+          <uf-import-error-log
+            *ngIf="exportDate"
+            [exportDate]="exportDate"
+            [myService]="accessService"
+            [callParams]="{ mthd: 'accessPortalGetSyncLog' }"
+          ></uf-import-error-log>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>

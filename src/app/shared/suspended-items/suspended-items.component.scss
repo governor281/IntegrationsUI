@@ -1,0 +1,38 @@
+.full-width-table {
+  width: 100%;
+}
+th.header-title {
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+}
+
+tr.inner-detail-row {
+  height: 0;
+}
+
+tr.inner-element-row:not(.inner-expanded-row):hover {
+  background: #777;
+}
+
+tr.inner-element-row:not(.inner-expanded-row):active {
+  background: #efefef;
+}
+
+.inner-element-row td {
+  border-bottom-width: 0;
+}
+
+.inner-element-detail {
+  overflow: hidden;
+  display: flex;
+}
+
+.btnMatch {
+  background-color: #66903c;
+}
+
+.table-inner {
+  width: 100%;
+  border: 1px solid grey;
+}
