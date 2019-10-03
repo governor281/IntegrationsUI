@@ -1,0 +1,66 @@
+<table mat-table class="full-width-table" [dataSource]="itemWithMatches.MatchedIds" aria-label="Elements">
+  <ng-container matColumnDef="item">
+    <th class="header-title" mat-header-cell *matHeaderCellDef [attr.colspan]="displayedColumns.length">
+      Potential Matches
+    </th>
+  </ng-container>
+  <ng-container matColumnDef="FullName">
+    <th mat-header-cell *matHeaderCellDef>Full Name</th>
+    <td mat-cell *matCellDef="let row">{{ row.FullName }}</td>
+  </ng-container>
+  <ng-container matColumnDef="ApplicationEmail">
+    <th mat-header-cell *matHeaderCellDef>Email</th>
+    <td mat-cell *matCellDef="let row">{{ row.ApplicationEmail }}</td>
+  </ng-container>
+  <ng-container matColumnDef="Phone">
+    <th mat-header-cell *matHeaderCellDef>Phone</th>
+    <td mat-cell *matCellDef="let row">{{ row.Phone }}</td>
+  </ng-container>
+  <ng-container matColumnDef="AccessPortalId">
+    <th mat-header-cell *matHeaderCellDef>Access Portal ID</th>
+    <td mat-cell *matCellDef="let row">{{ row.AccessPortalId }}</td>
+  </ng-container>
+  <ng-container matColumnDef="StudentUniqueId">
+    <th mat-header-cell *matHeaderCellDef>Student ID</th>
+    <td mat-cell *matCellDef="let row">{{ row.StudentUniqueId }}</td>
+  </ng-container>
+  <ng-container matColumnDef="ParentUniqueId">
+    <th mat-header-cell *matHeaderCellDef>Parent ID</th>
+    <td mat-cell *matCellDef="let row">{{ row.ParentUniqueId }}</td>
+  </ng-container>
+  <ng-container matColumnDef="BirthDate">
+    <th mat-header-cell *matHeaderCellDef>DOB</th>
+    <td mat-cell *matCellDef="let row">{{ row.BirthDate }}</td>
+  </ng-container>
+  <ng-container matColumnDef="AddressLine1">
+    <th mat-header-cell *matHeaderCellDef>AddressLine1</th>
+    <td mat-cell *matCellDef="let row">{{ row.AddressLine1 }}</td>
+  </ng-container>
+  <ng-container matColumnDef="AddressCtry">
+    <th mat-header-cell *matHeaderCellDef>Country</th>
+    <td mat-cell *matCellDef="let row">{{ row.AddressCtry }}</td>
+  </ng-container>
+  <ng-container matColumnDef="AddressCity">
+    <th mat-header-cell *matHeaderCellDef>City</th>
+    <td mat-cell *matCellDef="let row">{{ row.AddressCity }}</td>
+  </ng-container>
+  <ng-container matColumnDef="AddressZip">
+    <th mat-header-cell *matHeaderCellDef>Zip</th>
+    <td mat-cell *matCellDef="let row">{{ row.AddressZip }}</td>
+  </ng-container>
+  <ng-container matColumnDef="AddressState">
+    <th mat-header-cell *matHeaderCellDef>State</th>
+    <td mat-cell *matCellDef="let row">{{ row.AddressState }}</td>
+  </ng-container>
+  <ng-container matColumnDef="matchbutton">
+    <th mat-header-cell *matHeaderCellDef></th>
+    <td mat-cell *matCellDef="let row">
+      <button mat-raised-button class="btnMatch suspendeditem-grid-button">
+        <mat-icon>compare_arrows</mat-icon> Match
+      </button>
+    </td>
+  </ng-container>
+  <tr mat-header-row *matHeaderRowDef="['item']"></tr>
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>

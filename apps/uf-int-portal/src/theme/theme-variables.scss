@@ -1,0 +1,139 @@
+/*
+ * Application global variables.
+ */
+
+// Angular Material custom theme
+// See https://material.angular.io/guide/theming for more details.
+//
+// You can also read https://medium.com/@tomastrajan/the-complete-guide-to-angular-material-themes-4d165a9d24d1
+// for more insight about Angular Material theming.
+
+@import "~@angular/material/theming";
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue.
+// $uf-primary: mat-palette($mat-blue);
+// $uf-accent: mat-palette($mat-pink, A200, A100, A400);
+
+// // The warn palette is optional (defaults to red).
+// $uf-warn: mat-palette($mat-red);
+
+// // Create the theme object (a Sass map containing all of the palettes).
+// $uf-theme: mat-light-theme($uf-primary, $uf-accent, $uf-warn);
+
+// // Material design icons font path
+// $material-design-icons-font-directory-path: "~material-design-icons-iconfont/dist/fonts/";
+
+// $uf-primary: mat-palette(#ff8300, 800, 300, 900);
+// $uf-accent: mat-palette(#00a3d7);
+// $uf-warn: mat-palette(#a72626, 600);
+
+$uf-primary: (
+  50: #fff0e0,
+  100: #ffdab3,
+  200: #ffc180,
+  300: #ffa84d,
+  400: #ff9626,
+  500: #ff8300,
+  600: #ff7b00,
+  700: #ff7000,
+  800: #ff6600,
+  900: #ff5300,
+  A100: #ffffff,
+  A200: #fff6f2,
+  A400: #ffd0bf,
+  A700: #ffbda6,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #000000,
+    500: #000000,
+    600: #000000,
+    700: #000000,
+    800: #000000,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #000000
+  )
+);
+
+$uf-ufsecondary: (
+  50: #e0f4fa,
+  100: #b3e3f3,
+  200: #80d1eb,
+  300: #4dbfe3,
+  400: #26b1dd,
+  500: #00a3d7,
+  600: #009bd3,
+  700: #0091cd,
+  800: #0088c7,
+  900: #0077be,
+  A100: #e6f4ff,
+  A200: #b3dfff,
+  A400: #80c9ff,
+  A700: #67beff,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #000000,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #000000
+  )
+);
+$uf-ufwarn: (
+  50: #f9e7e7,
+  100: #f1c3c3,
+  200: #e79b9b,
+  300: #dd7273,
+  400: #d65455,
+  500: #cf3637,
+  600: #ca3031,
+  700: #c3292a,
+  800: #bd2223,
+  900: #b21616,
+  A100: #ffe5e5,
+  A200: #ffb2b2,
+  A400: #ff7f7f,
+  A700: #ff6565,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #ffffff,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #000000
+  )
+);
+
+$uf-primary: mat-palette($uf-primary, 800, 300, 900);
+$uf-accent: mat-palette($uf-ufsecondary);
+$uf-warn: mat-palette($uf-ufwarn, 600);
+
+$uf-theme: mat-light-theme($uf-primary, $uf-accent, $uf-warn);
+
+$material-design-icons-font-directory-path: "~material-design-icons-iconfont/dist/fonts/";
+.mat-toolbar.mat-toolbar-grad {
+  background: linear-gradient(90deg, #ffc180 0%, #ff9626 50%, #ff8300 100%);
+}
