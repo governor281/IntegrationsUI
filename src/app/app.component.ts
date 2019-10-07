@@ -8,6 +8,8 @@ import { filter, map, switchMap } from 'rxjs/operators';
 import { environment } from '@env/environment';
 import { Logger, I18nService, untilDestroyed } from '@app/core';
 import { AdalService } from 'adal-angular4';
+import { UFAuthorizationService, UFAuthorizationResponse } from '../api';
+import { RoleManager } from './core/authorization/guards/rolemanager.service';
 
 const log = new Logger('App');
 
@@ -23,7 +25,9 @@ export class AppComponent implements OnInit, OnDestroy {
     private titleService: Title,
     private translateService: TranslateService,
     private i18nService: I18nService,
-    private authService: AdalService
+    private authService: AdalService,
+    private rolesService: UFAuthorizationService,
+    private roleManager: RoleManager
   ) {
     authService.init({ ...environment.config, redirectUri: 'http://localhost:4200' });
     this.authService.handleWindowCallback();
@@ -33,13 +37,16 @@ export class AppComponent implements OnInit, OnDestroy {
     // Setup logger
     if (!this.authService.userInfo.authenticated) {
       this.router.navigate(['login']);
+    } else {
+      this.rolesService.uFAuthorizationGetUserRoleIds().subscribe((res: UFAuthorizationResponse) => {
+        this.roleManager.roleIds = res.RoleIds;
+        this.router.navigate(['home']);
+      });
     }
     if (environment.production) {
       Logger.enableProductionMode();
     }
-
     log.debug('init');
-
     // Setup translations
     this.i18nService.init(environment.defaultLanguage, environment.supportedLanguages);
 

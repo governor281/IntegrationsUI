@@ -1,0 +1,32 @@
+.grid-container {
+  margin: 20px;
+}
+
+// .dashboard-card {
+//   position: absolute;
+//   top: 15px;
+//   left: 15px;
+//   right: 15px;
+//   bottom: 15px;
+//   overflow: hidden;
+// }
+
+.more-button {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+}
+
+.inline-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  //grid-template-columns: 1fr 1fr 1fr;
+  grid-row-gap: 20px;
+  grid-column-gap: 20px;
+}
+
+.sus-item-data {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 5px 50px;
+}

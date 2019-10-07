@@ -7,11 +7,20 @@ import { MaterialModule } from '@app/shared/material/material.module';
 import { AccessPortalRoutingModule } from './access-portal-routing.module';
 import { AccessPortalComponent } from './access-portal.component';
 import { SharedModule } from '@app/shared';
-import { AccessPortalService } from 'src/api';
+import { AccessPortalService } from '../../api';
+
+import { AccessPortalImportLogsComponent } from './access-portal-import-logs/access-portal-import-logs.component';
+import { AccessPortalImportComponent } from './access-portal-import/access-portal-import.component';
+import { AccessPortalSuspendedItemsComponent } from './access-portal-suspended-items/access-portal-suspended-items.component';
 
 @NgModule({
   imports: [CommonModule, TranslateModule, FlexLayoutModule, MaterialModule, AccessPortalRoutingModule, SharedModule],
-  declarations: [AccessPortalComponent],
+  declarations: [
+    AccessPortalComponent,
+    AccessPortalImportLogsComponent,
+    AccessPortalImportComponent,
+    AccessPortalSuspendedItemsComponent
+  ],
   providers: [AccessPortalService]
 })
 export class AccessPortalModule {}

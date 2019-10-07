@@ -16,11 +16,11 @@ import { HttpClient, HttpHeaders, HttpParams, HttpResponse, HttpEvent, HttpParam
 import { CustomHttpParameterCodec } from '../encoder';
 import { Observable } from 'rxjs';
 
+import { ContactResponse } from '../model/contactResponse';
 import { CsvItemHobsons } from '../model/csvItemHobsons';
 import { FullSyncResponse } from '../model/fullSyncResponse';
 import { HobsonCxTranslation } from '../model/hobsonCxTranslation';
 import { LogDetailResponse } from '../model/logDetailResponse';
-import { PersonalResponse } from '../model/personalResponse';
 import { SuspendedItemResponse } from '../model/suspendedItemResponse';
 import { TranslationResponse } from '../model/translationResponse';
 
@@ -191,17 +191,17 @@ export class HobsonsService implements HobsonsServiceInterface {
     contactId: string,
     observe?: 'body',
     reportProgress?: boolean
-  ): Observable<PersonalResponse>;
+  ): Observable<ContactResponse>;
   public hobsonsGetApiHobsons(
     contactId: string,
     observe?: 'response',
     reportProgress?: boolean
-  ): Observable<HttpResponse<PersonalResponse>>;
+  ): Observable<HttpResponse<ContactResponse>>;
   public hobsonsGetApiHobsons(
     contactId: string,
     observe?: 'events',
     reportProgress?: boolean
-  ): Observable<HttpEvent<PersonalResponse>>;
+  ): Observable<HttpEvent<ContactResponse>>;
   public hobsonsGetApiHobsons(
     contactId: string,
     observe: any = 'body',
@@ -225,7 +225,7 @@ export class HobsonsService implements HobsonsServiceInterface {
       headers = headers.set('Accept', httpHeaderAcceptSelected);
     }
 
-    return this.httpClient.get<PersonalResponse>(`${this.configuration.basePath}/api/Hobsons`, {
+    return this.httpClient.get<ContactResponse>(`${this.configuration.basePath}/api/Hobsons`, {
       params: queryParameters,
       withCredentials: this.configuration.withCredentials,
       headers: headers,
@@ -244,17 +244,17 @@ export class HobsonsService implements HobsonsServiceInterface {
     contactId: string,
     observe?: 'body',
     reportProgress?: boolean
-  ): Observable<PersonalResponse>;
+  ): Observable<ContactResponse>;
   public hobsonsGetContactDetail(
     contactId: string,
     observe?: 'response',
     reportProgress?: boolean
-  ): Observable<HttpResponse<PersonalResponse>>;
+  ): Observable<HttpResponse<ContactResponse>>;
   public hobsonsGetContactDetail(
     contactId: string,
     observe?: 'events',
     reportProgress?: boolean
-  ): Observable<HttpEvent<PersonalResponse>>;
+  ): Observable<HttpEvent<ContactResponse>>;
   public hobsonsGetContactDetail(
     contactId: string,
     observe: any = 'body',
@@ -278,7 +278,7 @@ export class HobsonsService implements HobsonsServiceInterface {
       headers = headers.set('Accept', httpHeaderAcceptSelected);
     }
 
-    return this.httpClient.get<PersonalResponse>(`${this.configuration.basePath}/api/Hobsons/GetContactDetail`, {
+    return this.httpClient.get<ContactResponse>(`${this.configuration.basePath}/api/Hobsons/GetContactDetail`, {
       params: queryParameters,
       withCredentials: this.configuration.withCredentials,
       headers: headers,

@@ -25,7 +25,10 @@ import { PathHelper } from './core/authentication/constants';
 import { AdalService, AdalGuard } from 'adal-angular4';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AppRoutingModule } from './app-routing.module';
-import { EntityDataModule } from '@ngrx/data';
+import { AccessPortalAdminGuard } from './core/authorization/guards/accessportal-admin-guard.component';
+import { RoleManager } from './core/authorization/guards/rolemanager.service';
+import { HasRolePipe } from '@app/shared/pipes/has-role.pipe';
+import { ColumnHeaderPipe } from '@app/shared/pipes/column-header.pipe';
 
 export function myfunc(): Configuration {
   return new Configuration({
@@ -54,13 +57,10 @@ export function myfunc(): Configuration {
     MatIconModule,
     MatButtonModule,
     LayoutModule,
-
-    AppRoutingModule,
-
-    EntityDataModule // must be imported as the last module as it contains the fallback route
+    AppRoutingModule // must be imported as the last module as it contains the fallback route
   ],
   declarations: [AppComponent, NotFoundComponent],
-  providers: [AdalService, AdalGuard],
+  providers: [AdalService, AdalGuard, AccessPortalAdminGuard, RoleManager],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

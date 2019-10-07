@@ -43,7 +43,7 @@ export interface WorkdayHcm027ServiceInterface {
   workdayHcm027GetSyncLogDates(extraHttpRequestParams?: any): Observable<LogDetailResponse>;
 
   /**
-   * Initiates the removal of rescinds from CX via a CSV file dropped by Workday for the HCM.INT027 integration
+   * Initiates the processing of photos in the ftp server directory /INT/HCM/INT027WorkerPhoto/NewImages
    *
    */
   workdayHcm027HcmInt027Begin(extraHttpRequestParams?: any): Observable<FullSyncResponse>;

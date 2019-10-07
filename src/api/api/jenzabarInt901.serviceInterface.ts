@@ -43,8 +43,14 @@ export interface JenzabarInt901ServiceInterface {
   jenzabarInt901GetSyncLogDates(extraHttpRequestParams?: any): Observable<LogDetailResponse>;
 
   /**
-   * Initiates the creation of the AD file needed to generate student AD accounts
+   * Initiates the creation of the 901 Adds and Updates AD file needed to generate student AD accounts
    *
    */
   jenzabarInt901JenInt901Begin(extraHttpRequestParams?: any): Observable<FullSyncResponse>;
+
+  /**
+   * Initiates the creation of the 901 Adds AD file needed to generate student AD accounts
+   *
+   */
+  jenzabarInt901JenInt901BeginAddsOnly(extraHttpRequestParams?: any): Observable<FullSyncResponse>;
 }

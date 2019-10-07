@@ -1,19 +1,23 @@
 import { Component } from '@angular/core';
-import { map } from 'rxjs/operators';
-import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
-import { AccessPortalService } from 'src/api';
 
 @Component({
   selector: 'uf-access-portal',
-  templateUrl: './access-portal.component.html',
-  styleUrls: ['./access-portal.component.scss']
+  templateUrl: './access-portal.component.html'
 })
 export class AccessPortalComponent {
-  exportDate: string = '';
-
-  constructor(private breakpointObserver: BreakpointObserver, public accessService: AccessPortalService) {}
-
-  setExportDate(date: string) {
-    this.exportDate = date;
-  }
+  mylinks = [
+    {
+      text: 'Suspended Items',
+      link: '/accessportal/suspended'
+    },
+    {
+      text: 'Import Error Logs',
+      link: '/accessportal/importlogs'
+    },
+    {
+      text: 'Import Access Data into Jenzabar CX',
+      link: '/accessportal/startimport'
+    }
+  ];
+  constructor() {}
 }

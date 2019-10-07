@@ -25,9 +25,6 @@ export * from './jenzabarInt902.serviceInterface';
 export * from './logEntryDetail.service';
 import { LogEntryDetailService } from './logEntryDetail.service';
 export * from './logEntryDetail.serviceInterface';
-export * from './personal.service';
-import { PersonalService } from './personal.service';
-export * from './personal.serviceInterface';
 export * from './role.service';
 import { RoleService } from './role.service';
 export * from './role.serviceInterface';
@@ -89,7 +86,6 @@ export const APIS = [
   JenzabarInt901Service,
   JenzabarInt902Service,
   LogEntryDetailService,
-  PersonalService,
   RoleService,
   UFAuthorizationService,
   WorkdayCcpStudentsService,

@@ -14,6 +14,8 @@ import { HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { FullSyncResponse } from '../model/fullSyncResponse';
+import { LogDetailResponse } from '../model/logDetailResponse';
+import { SuspendedItemResponse } from '../model/suspendedItemResponse';
 
 import { Configuration } from '../configuration';
 
@@ -22,10 +24,50 @@ export interface JenzabarInt902ServiceInterface {
   configuration: Configuration;
 
   /**
+   * Delete the suspended item using the passed in ID from the Suspended Items DB
    *
+   * @param suspendedItemId Suspended Item IDs to delete
+   */
+  jenzabarInt902DeleteSuspendedItem(
+    suspendedItemId: string,
+    extraHttpRequestParams?: any
+  ): Observable<SuspendedItemResponse>;
+
+  /**
+   * Delete the suspended item using the passed in ID from the Suspended Items DB
+   *
+   * @param suspendedItems List of Suspended Item IDs to delete
+   */
+  jenzabarInt902DeleteSuspendedSelected(
+    suspendedItems: Array<string>,
+    extraHttpRequestParams?: any
+  ): Observable<SuspendedItemResponse>;
+
+  /**
+   * Displays the import log for the given date
+   *
+   * @param exportDate Date the JEN.Int902 import into Jenzabar occured
+   */
+  jenzabarInt902GetApiJenzabarInt902(exportDate: string, extraHttpRequestParams?: any): Observable<LogDetailResponse>;
+
+  /**
+   * Retrieves items that were suspended during the import
    *
    */
-  jenzabarInt902GetApiJenzabarInt902(extraHttpRequestParams?: any): Observable<FullSyncResponse>;
+  jenzabarInt902GetSuspendedItems(extraHttpRequestParams?: any): Observable<SuspendedItemResponse>;
+
+  /**
+   * Displays the import log for the given date
+   *
+   * @param exportDate Date the JEN.Int902 import into Jenzabar occured
+   */
+  jenzabarInt902GetSyncLog(exportDate: string, extraHttpRequestParams?: any): Observable<LogDetailResponse>;
+
+  /**
+   * Gets a distinct list of dates that can be used for import log information
+   *
+   */
+  jenzabarInt902GetSyncLogDates(extraHttpRequestParams?: any): Observable<LogDetailResponse>;
 
   /**
    *

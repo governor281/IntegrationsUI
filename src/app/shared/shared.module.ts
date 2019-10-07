@@ -11,6 +11,9 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { SuspendedItemsMatchesComponent } from '@app/shared/suspended-items/suspended-items-matches.component';
+import { HasRolePipe } from './pipes/has-role.pipe';
+import { ColumnHeaderPipe } from './pipes/column-header.pipe';
+import { SuspendedItemsMobileComponent } from '@app/shared/suspended-items/suspended-items-mobile.component';
 
 @NgModule({
   imports: [FlexLayoutModule, MaterialModule, CommonModule, MatTableModule, MatPaginatorModule, MatSortModule],
@@ -19,8 +22,19 @@ import { SuspendedItemsMatchesComponent } from '@app/shared/suspended-items/susp
     ImportErrorLogComponent,
     LogDateSelectorComponent,
     SuspendedItemsComponent,
-    SuspendedItemsMatchesComponent
+    SuspendedItemsMatchesComponent,
+    SuspendedItemsMobileComponent,
+    HasRolePipe,
+    ColumnHeaderPipe
   ],
-  exports: [LoaderComponent, ImportErrorLogComponent, LogDateSelectorComponent, SuspendedItemsComponent]
+  exports: [
+    LoaderComponent,
+    ImportErrorLogComponent,
+    LogDateSelectorComponent,
+    SuspendedItemsComponent,
+    HasRolePipe,
+    ColumnHeaderPipe,
+    SuspendedItemsMobileComponent
+  ]
 })
 export class SharedModule {}

@@ -3,8 +3,9 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
-
+import { MatIconModule } from '@angular/material/icon';
 import { SuspendedItemsComponent } from './suspended-items.component';
+import { MatOptionModule } from '@angular/material/core';
 
 describe('SuspendedItemsComponent', () => {
   let component: SuspendedItemsComponent;
@@ -13,7 +14,7 @@ describe('SuspendedItemsComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [SuspendedItemsComponent],
-      imports: [NoopAnimationsModule, MatPaginatorModule, MatSortModule, MatTableModule]
+      imports: [NoopAnimationsModule, MatPaginatorModule, MatSortModule, MatTableModule, MatIconModule, MatOptionModule]
     }).compileComponents();
   }));
 

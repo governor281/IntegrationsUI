@@ -11,23 +11,6 @@ import { I18nService, AuthenticationService, CredentialsService } from '@app/cor
   styleUrls: ['./shell.component.scss']
 })
 export class ShellComponent {
-  constructor(
-    private router: Router,
-    private titleService: Title,
-    private media: MediaObserver,
-    private authenticationService: AuthenticationService,
-    private credentialsService: CredentialsService,
-    private i18nService: I18nService
-  ) {}
-
-  setLanguage(language: string) {
-    this.i18nService.language = language;
-  }
-
-  logout() {
-    this.authenticationService.logout().subscribe(() => this.router.navigate(['/login'], { replaceUrl: true }));
-  }
-
   get username(): string | null {
     const credentials = this.credentialsService.credentials;
     return credentials ? credentials.username : null;
@@ -43,5 +26,27 @@ export class ShellComponent {
 
   get title(): string {
     return this.titleService.getTitle();
+  }
+
+  features = [
+    { rLink: '/home', text: 'Home' },
+    { rLink: '/about', text: 'About' },
+    { rLink: '/accessportal', text: 'Access Portal' }
+  ];
+  constructor(
+    private router: Router,
+    private titleService: Title,
+    private media: MediaObserver,
+    private authenticationService: AuthenticationService,
+    private credentialsService: CredentialsService,
+    private i18nService: I18nService
+  ) {}
+
+  setLanguage(language: string) {
+    this.i18nService.language = language;
+  }
+
+  logout() {
+    this.authenticationService.logout().subscribe(() => this.router.navigate(['/login'], { replaceUrl: true }));
   }
 }

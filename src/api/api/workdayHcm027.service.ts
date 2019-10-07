@@ -185,7 +185,7 @@ export class WorkdayHcm027Service implements WorkdayHcm027ServiceInterface {
   }
 
   /**
-   * Initiates the removal of rescinds from CX via a CSV file dropped by Workday for the HCM.INT027 integration
+   * Initiates the processing of photos in the ftp server directory /INT/HCM/INT027WorkerPhoto/NewImages
    * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
    * @param reportProgress flag to report request and response progress.
    */

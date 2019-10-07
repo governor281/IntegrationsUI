@@ -1,0 +1,31 @@
+<div class="inline-grid" *ngIf="suspendedItemResponse">
+  <mat-card *ngFor="let item of suspendedItemResponse.suspendedItems">
+    <mat-card-header>
+      <mat-card-title>
+        {{ item.FullName }}
+      </mat-card-title>
+    </mat-card-header>
+    <mat-expansion-panel class="inline-grid" hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{ item.FullName }}
+        </mat-panel-title>
+        <mat-panel-description> </mat-panel-description>
+      </mat-expansion-panel-header>
+      <div class="sus-item-data">
+        <div *ngFor="let col of columns">
+          <span class="grid-field">{{ col | columnHeader }} : </span>
+          <span class="grid-value">{{ item[col] }}</span>
+        </div>
+      </div>
+      <mat-action-row>
+        <button mat-button class="sus-item-create" *ngIf="canCreate">Create</button>
+        <button mat-button class="sus-item-ignore" *ngIf="canIgnore">Ignore</button>
+        <button mat-button class="sus-item-logs" (click)="viewLogsForSuspendedItem(item)">Logs</button>
+      </mat-action-row>
+    </mat-expansion-panel>
+    <mat-card-actions *ngIf="item.MatchedIds.length">
+      <button mat-button class="sus-item-match">Matches</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

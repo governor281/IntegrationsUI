@@ -13,9 +13,9 @@ import { HttpHeaders } from '@angular/common/http';
 
 import { Observable } from 'rxjs';
 
+import { ContactResponse } from '../model/contactResponse';
 import { FullSyncResponse } from '../model/fullSyncResponse';
 import { LogDetailResponse } from '../model/logDetailResponse';
-import { PersonalResponse } from '../model/personalResponse';
 import { SuspendedItemResponse } from '../model/suspendedItemResponse';
 
 import { Configuration } from '../configuration';
@@ -46,7 +46,7 @@ export interface AccessPortalServiceInterface {
    *
    * @param contactId Cx ID of the contact to retrieve information for
    */
-  accessPortalGetContactDetail(contactId: string, extraHttpRequestParams?: any): Observable<PersonalResponse>;
+  accessPortalGetContactDetail(contactId: string, extraHttpRequestParams?: any): Observable<ContactResponse>;
 
   /**
    * Initiates an import of AccessPortal data into Jenzabar CX

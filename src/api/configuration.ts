@@ -20,8 +20,6 @@ export class Configuration {
   encoder?: HttpParameterCodec;
 
   constructor(configurationParameters: ConfigurationParameters = {}) {
-    console.log(`FYI:: Going through Generated API `);
-
     this.apiKeys = configurationParameters.apiKeys;
     this.username = configurationParameters.username;
     this.password = configurationParameters.password;

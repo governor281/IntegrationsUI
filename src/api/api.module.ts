@@ -11,7 +11,6 @@ import { HobsonsService } from './api/hobsons.service';
 import { JenzabarInt901Service } from './api/jenzabarInt901.service';
 import { JenzabarInt902Service } from './api/jenzabarInt902.service';
 import { LogEntryDetailService } from './api/logEntryDetail.service';
-import { PersonalService } from './api/personal.service';
 import { RoleService } from './api/role.service';
 import { UFAuthorizationService } from './api/uFAuthorization.service';
 import { WorkdayCcpStudentsService } from './api/workdayCcpStudents.service';
@@ -44,7 +43,6 @@ import { WorkdayTranslationsService } from './api/workdayTranslations.service';
     JenzabarInt901Service,
     JenzabarInt902Service,
     LogEntryDetailService,
-    PersonalService,
     RoleService,
     UFAuthorizationService,
     WorkdayCcpStudentsService,

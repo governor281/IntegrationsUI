@@ -13,11 +13,11 @@ import { HttpHeaders } from '@angular/common/http';
 
 import { Observable } from 'rxjs';
 
+import { ContactResponse } from '../model/contactResponse';
 import { CsvItemHobsons } from '../model/csvItemHobsons';
 import { FullSyncResponse } from '../model/fullSyncResponse';
 import { HobsonCxTranslation } from '../model/hobsonCxTranslation';
 import { LogDetailResponse } from '../model/logDetailResponse';
-import { PersonalResponse } from '../model/personalResponse';
 import { SuspendedItemResponse } from '../model/suspendedItemResponse';
 import { TranslationResponse } from '../model/translationResponse';
 
@@ -49,14 +49,14 @@ export interface HobsonsServiceInterface {
    *
    * @param contactId Cx ID of the contact to retrieve information for
    */
-  hobsonsGetApiHobsons(contactId: string, extraHttpRequestParams?: any): Observable<PersonalResponse>;
+  hobsonsGetApiHobsons(contactId: string, extraHttpRequestParams?: any): Observable<ContactResponse>;
 
   /**
    * Retrieves details regarding the employees
    *
    * @param contactId Cx ID of the contact to retrieve information for
    */
-  hobsonsGetContactDetail(contactId: string, extraHttpRequestParams?: any): Observable<PersonalResponse>;
+  hobsonsGetContactDetail(contactId: string, extraHttpRequestParams?: any): Observable<ContactResponse>;
 
   /**
    * Initiates an import of Hobsons Radius data into Jenzabar CX

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 import { Shell } from '@app/shell/shell.service';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { AccessPortalAdminGuard } from './core/authorization/guards/accessportal-admin-guard.component';
 
 const routes: Routes = [
   Shell.childRoutes([
@@ -11,8 +12,9 @@ const routes: Routes = [
     },
 
     {
-      path: 'int/accessportal',
-      loadChildren: './access-portal/access-portal.module#AccessPortalModule'
+      path: 'accessportal',
+      loadChildren: './access-portal/access-portal.module#AccessPortalModule',
+      canActivate: [AccessPortalAdminGuard]
     },
     { path: '', redirectTo: 'about', pathMatch: 'full' }
   ]),

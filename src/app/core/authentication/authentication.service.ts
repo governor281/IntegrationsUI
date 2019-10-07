@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-
-import { Credentials, CredentialsService } from './credentials.service';
+import { CredentialsService } from './credentials.service';
 import { AdalService } from 'adal-angular4';
 
 export interface LoginContext {
@@ -35,6 +34,7 @@ export class AuthenticationService {
   logout(): Observable<boolean> {
     // Customize credentials invalidation here
     this.credentialsService.setCredentials();
+    this.authService.logOut();
     return of(true);
   }
 }

@@ -17,6 +17,8 @@ import { CustomHttpParameterCodec } from '../encoder';
 import { Observable } from 'rxjs';
 
 import { FullSyncResponse } from '../model/fullSyncResponse';
+import { LogDetailResponse } from '../model/logDetailResponse';
+import { SuspendedItemResponse } from '../model/suspendedItemResponse';
 
 import { BASE_PATH, COLLECTION_FORMATS } from '../variables';
 import { Configuration } from '../configuration';
@@ -44,19 +46,37 @@ export class JenzabarInt902Service implements JenzabarInt902ServiceInterface {
   }
 
   /**
+   * Delete the suspended item using the passed in ID from the Suspended Items DB
+   * @param suspendedItemId Suspended Item IDs to delete
    * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
    * @param reportProgress flag to report request and response progress.
    */
-  public jenzabarInt902GetApiJenzabarInt902(observe?: 'body', reportProgress?: boolean): Observable<FullSyncResponse>;
-  public jenzabarInt902GetApiJenzabarInt902(
+  public jenzabarInt902DeleteSuspendedItem(
+    suspendedItemId: string,
+    observe?: 'body',
+    reportProgress?: boolean
+  ): Observable<SuspendedItemResponse>;
+  public jenzabarInt902DeleteSuspendedItem(
+    suspendedItemId: string,
     observe?: 'response',
     reportProgress?: boolean
-  ): Observable<HttpResponse<FullSyncResponse>>;
-  public jenzabarInt902GetApiJenzabarInt902(
+  ): Observable<HttpResponse<SuspendedItemResponse>>;
+  public jenzabarInt902DeleteSuspendedItem(
+    suspendedItemId: string,
     observe?: 'events',
     reportProgress?: boolean
-  ): Observable<HttpEvent<FullSyncResponse>>;
-  public jenzabarInt902GetApiJenzabarInt902(observe: any = 'body', reportProgress: boolean = false): Observable<any> {
+  ): Observable<HttpEvent<SuspendedItemResponse>>;
+  public jenzabarInt902DeleteSuspendedItem(
+    suspendedItemId: string,
+    observe: any = 'body',
+    reportProgress: boolean = false
+  ): Observable<any> {
+    if (suspendedItemId === null || suspendedItemId === undefined) {
+      throw new Error(
+        'Required parameter suspendedItemId was null or undefined when calling jenzabarInt902DeleteSuspendedItem.'
+      );
+    }
+
     let headers = this.defaultHeaders;
 
     // to determine the Accept header
@@ -66,7 +86,265 @@ export class JenzabarInt902Service implements JenzabarInt902ServiceInterface {
       headers = headers.set('Accept', httpHeaderAcceptSelected);
     }
 
-    return this.httpClient.get<FullSyncResponse>(`${this.configuration.basePath}/api/JenzabarInt902`, {
+    // to determine the Content-Type header
+    const consumes: string[] = [
+      'application/json',
+      'text/json',
+      'application/xml',
+      'text/xml',
+      'application/x-www-form-urlencoded'
+    ];
+    const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
+    if (httpContentTypeSelected !== undefined) {
+      headers = headers.set('Content-Type', httpContentTypeSelected);
+    }
+
+    return this.httpClient.post<SuspendedItemResponse>(
+      `${this.configuration.basePath}/api/JenzabarInt902/DeleteSuspendedItem`,
+      suspendedItemId,
+      {
+        withCredentials: this.configuration.withCredentials,
+        headers: headers,
+        observe: observe,
+        reportProgress: reportProgress
+      }
+    );
+  }
+
+  /**
+   * Delete the suspended item using the passed in ID from the Suspended Items DB
+   * @param suspendedItems List of Suspended Item IDs to delete
+   * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+   * @param reportProgress flag to report request and response progress.
+   */
+  public jenzabarInt902DeleteSuspendedSelected(
+    suspendedItems: Array<string>,
+    observe?: 'body',
+    reportProgress?: boolean
+  ): Observable<SuspendedItemResponse>;
+  public jenzabarInt902DeleteSuspendedSelected(
+    suspendedItems: Array<string>,
+    observe?: 'response',
+    reportProgress?: boolean
+  ): Observable<HttpResponse<SuspendedItemResponse>>;
+  public jenzabarInt902DeleteSuspendedSelected(
+    suspendedItems: Array<string>,
+    observe?: 'events',
+    reportProgress?: boolean
+  ): Observable<HttpEvent<SuspendedItemResponse>>;
+  public jenzabarInt902DeleteSuspendedSelected(
+    suspendedItems: Array<string>,
+    observe: any = 'body',
+    reportProgress: boolean = false
+  ): Observable<any> {
+    if (suspendedItems === null || suspendedItems === undefined) {
+      throw new Error(
+        'Required parameter suspendedItems was null or undefined when calling jenzabarInt902DeleteSuspendedSelected.'
+      );
+    }
+
+    let headers = this.defaultHeaders;
+
+    // to determine the Accept header
+    const httpHeaderAccepts: string[] = ['application/json', 'text/json', 'application/xml', 'text/xml'];
+    const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+    if (httpHeaderAcceptSelected !== undefined) {
+      headers = headers.set('Accept', httpHeaderAcceptSelected);
+    }
+
+    // to determine the Content-Type header
+    const consumes: string[] = [
+      'application/json',
+      'text/json',
+      'application/xml',
+      'text/xml',
+      'application/x-www-form-urlencoded'
+    ];
+    const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
+    if (httpContentTypeSelected !== undefined) {
+      headers = headers.set('Content-Type', httpContentTypeSelected);
+    }
+
+    return this.httpClient.post<SuspendedItemResponse>(
+      `${this.configuration.basePath}/api/JenzabarInt902/DeleteSuspendedSelected`,
+      suspendedItems,
+      {
+        withCredentials: this.configuration.withCredentials,
+        headers: headers,
+        observe: observe,
+        reportProgress: reportProgress
+      }
+    );
+  }
+
+  /**
+   * Displays the import log for the given date
+   * @param exportDate Date the JEN.Int902 import into Jenzabar occured
+   * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+   * @param reportProgress flag to report request and response progress.
+   */
+  public jenzabarInt902GetApiJenzabarInt902(
+    exportDate: string,
+    observe?: 'body',
+    reportProgress?: boolean
+  ): Observable<LogDetailResponse>;
+  public jenzabarInt902GetApiJenzabarInt902(
+    exportDate: string,
+    observe?: 'response',
+    reportProgress?: boolean
+  ): Observable<HttpResponse<LogDetailResponse>>;
+  public jenzabarInt902GetApiJenzabarInt902(
+    exportDate: string,
+    observe?: 'events',
+    reportProgress?: boolean
+  ): Observable<HttpEvent<LogDetailResponse>>;
+  public jenzabarInt902GetApiJenzabarInt902(
+    exportDate: string,
+    observe: any = 'body',
+    reportProgress: boolean = false
+  ): Observable<any> {
+    if (exportDate === null || exportDate === undefined) {
+      throw new Error(
+        'Required parameter exportDate was null or undefined when calling jenzabarInt902GetApiJenzabarInt902.'
+      );
+    }
+
+    let queryParameters = new HttpParams({ encoder: this.encoder });
+    if (exportDate !== undefined && exportDate !== null) {
+      queryParameters = queryParameters.set('exportDate', <any>exportDate);
+    }
+
+    let headers = this.defaultHeaders;
+
+    // to determine the Accept header
+    const httpHeaderAccepts: string[] = ['application/json', 'text/json', 'application/xml', 'text/xml'];
+    const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+    if (httpHeaderAcceptSelected !== undefined) {
+      headers = headers.set('Accept', httpHeaderAcceptSelected);
+    }
+
+    return this.httpClient.get<LogDetailResponse>(`${this.configuration.basePath}/api/JenzabarInt902`, {
+      params: queryParameters,
+      withCredentials: this.configuration.withCredentials,
+      headers: headers,
+      observe: observe,
+      reportProgress: reportProgress
+    });
+  }
+
+  /**
+   * Retrieves items that were suspended during the import
+   * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+   * @param reportProgress flag to report request and response progress.
+   */
+  public jenzabarInt902GetSuspendedItems(observe?: 'body', reportProgress?: boolean): Observable<SuspendedItemResponse>;
+  public jenzabarInt902GetSuspendedItems(
+    observe?: 'response',
+    reportProgress?: boolean
+  ): Observable<HttpResponse<SuspendedItemResponse>>;
+  public jenzabarInt902GetSuspendedItems(
+    observe?: 'events',
+    reportProgress?: boolean
+  ): Observable<HttpEvent<SuspendedItemResponse>>;
+  public jenzabarInt902GetSuspendedItems(observe: any = 'body', reportProgress: boolean = false): Observable<any> {
+    let headers = this.defaultHeaders;
+
+    // to determine the Accept header
+    const httpHeaderAccepts: string[] = ['application/json', 'text/json', 'application/xml', 'text/xml'];
+    const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+    if (httpHeaderAcceptSelected !== undefined) {
+      headers = headers.set('Accept', httpHeaderAcceptSelected);
+    }
+
+    return this.httpClient.get<SuspendedItemResponse>(
+      `${this.configuration.basePath}/api/JenzabarInt902/GetSuspendedItems`,
+      {
+        withCredentials: this.configuration.withCredentials,
+        headers: headers,
+        observe: observe,
+        reportProgress: reportProgress
+      }
+    );
+  }
+
+  /**
+   * Displays the import log for the given date
+   * @param exportDate Date the JEN.Int902 import into Jenzabar occured
+   * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+   * @param reportProgress flag to report request and response progress.
+   */
+  public jenzabarInt902GetSyncLog(
+    exportDate: string,
+    observe?: 'body',
+    reportProgress?: boolean
+  ): Observable<LogDetailResponse>;
+  public jenzabarInt902GetSyncLog(
+    exportDate: string,
+    observe?: 'response',
+    reportProgress?: boolean
+  ): Observable<HttpResponse<LogDetailResponse>>;
+  public jenzabarInt902GetSyncLog(
+    exportDate: string,
+    observe?: 'events',
+    reportProgress?: boolean
+  ): Observable<HttpEvent<LogDetailResponse>>;
+  public jenzabarInt902GetSyncLog(
+    exportDate: string,
+    observe: any = 'body',
+    reportProgress: boolean = false
+  ): Observable<any> {
+    if (exportDate === null || exportDate === undefined) {
+      throw new Error('Required parameter exportDate was null or undefined when calling jenzabarInt902GetSyncLog.');
+    }
+
+    let queryParameters = new HttpParams({ encoder: this.encoder });
+    if (exportDate !== undefined && exportDate !== null) {
+      queryParameters = queryParameters.set('exportDate', <any>exportDate);
+    }
+
+    let headers = this.defaultHeaders;
+
+    // to determine the Accept header
+    const httpHeaderAccepts: string[] = ['application/json', 'text/json', 'application/xml', 'text/xml'];
+    const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+    if (httpHeaderAcceptSelected !== undefined) {
+      headers = headers.set('Accept', httpHeaderAcceptSelected);
+    }
+
+    return this.httpClient.get<LogDetailResponse>(`${this.configuration.basePath}/api/JenzabarInt902/GetSyncLog`, {
+      params: queryParameters,
+      withCredentials: this.configuration.withCredentials,
+      headers: headers,
+      observe: observe,
+      reportProgress: reportProgress
+    });
+  }
+
+  /**
+   * Gets a distinct list of dates that can be used for import log information
+   * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+   * @param reportProgress flag to report request and response progress.
+   */
+  public jenzabarInt902GetSyncLogDates(observe?: 'body', reportProgress?: boolean): Observable<LogDetailResponse>;
+  public jenzabarInt902GetSyncLogDates(
+    observe?: 'response',
+    reportProgress?: boolean
+  ): Observable<HttpResponse<LogDetailResponse>>;
+  public jenzabarInt902GetSyncLogDates(
+    observe?: 'events',
+    reportProgress?: boolean
+  ): Observable<HttpEvent<LogDetailResponse>>;
+  public jenzabarInt902GetSyncLogDates(observe: any = 'body', reportProgress: boolean = false): Observable<any> {
+    let headers = this.defaultHeaders;
+
+    // to determine the Accept header
+    const httpHeaderAccepts: string[] = ['application/json', 'text/json', 'application/xml', 'text/xml'];
+    const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+    if (httpHeaderAcceptSelected !== undefined) {
+      headers = headers.set('Accept', httpHeaderAcceptSelected);
+    }
+
+    return this.httpClient.get<LogDetailResponse>(`${this.configuration.basePath}/api/JenzabarInt902/GetSyncLogDates`, {
       withCredentials: this.configuration.withCredentials,
       headers: headers,
       observe: observe,

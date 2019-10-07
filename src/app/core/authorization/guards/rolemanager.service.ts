@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { UFAuthorizationService } from 'src/api';
+import { UFAuthorizationService } from '../../../../api';
 
 /*
 D2FABFC3-F3F0-44E0-A77F-A0A2648D8DF3    AccessPortalAdmin
@@ -21,7 +21,7 @@ D26E0BE7-B8B7-462B-AD88-6FFC1FF8D387    WorkdayFinUser
 
 @Injectable()
 export class RoleManager {
-  roles: Array<string> = [];
+  private roles: Array<string> = [];
 
   constructor(private authorizeService: UFAuthorizationService) {}
 

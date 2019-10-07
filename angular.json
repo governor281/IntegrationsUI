@@ -143,8 +143,5 @@
       }
     }
   },
-  "defaultProject": "uf-int-portal",
-  "cli": {
-    "defaultCollection": "@ngrx/schematics"
-  }
+  "defaultProject": "uf-int-portal"
 }

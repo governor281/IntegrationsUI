@@ -1,6 +1,6 @@
 import { CanActivate } from '@angular/router';
 import { Injectable } from '@angular/core';
-import { RoleManager } from './../guards/rolemanager.component';
+import { RoleManager } from './rolemanager.service';
 
 @Injectable()
 export class WorkdayAdminGuard implements CanActivate {

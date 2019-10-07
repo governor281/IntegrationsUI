@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { LogDateSelectorComponent } from './log-date-selector.component';
+import { MatSelectModule } from '@angular/material/select';
+import { MatOptionModule } from '@angular/material/core';
 
 describe('LogDateSelectorComponent', () => {
   let component: LogDateSelectorComponent;
@@ -8,7 +10,8 @@ describe('LogDateSelectorComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [LogDateSelectorComponent]
+      declarations: [LogDateSelectorComponent],
+      imports: [MatSelectModule, MatOptionModule]
     }).compileComponents();
   }));
 

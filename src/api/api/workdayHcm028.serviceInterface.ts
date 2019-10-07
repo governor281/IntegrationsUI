@@ -13,7 +13,6 @@ import { HttpHeaders } from '@angular/common/http';
 
 import { Observable } from 'rxjs';
 
-import { Csv028Model } from '../model/csv028Model';
 import { FullSyncResponse } from '../model/fullSyncResponse';
 import { LogDetailResponse } from '../model/logDetailResponse';
 import { SuspendedItemResponse } from '../model/suspendedItemResponse';
@@ -75,23 +74,6 @@ export interface WorkdayHcm028ServiceInterface {
    *
    */
   workdayHcm028HcmInt028Begin(extraHttpRequestParams?: any): Observable<FullSyncResponse>;
-
-  /**
-   * Processes the Workday HCM.INT028 Rescinds Data Radius data and updates the Jenzabar CX database
-   *
-   * @param csv028Items Serialized Csv004 objects containing Workday data to import into Jenzabar CX
-   */
-  workdayHcm028Post(csv028Items: Array<Csv028Model>, extraHttpRequestParams?: any): Observable<object>;
-
-  /**
-   * Retrieves the suspended item using the passed in ID from the Suspended Items DB and creates new records the Jenzabar CX database
-   *
-   * @param suspendedItemId ID of the suspended item to process as a new item in Jenzabar CX
-   */
-  workdayHcm028PostSuspendedItem(
-    suspendedItemId: string,
-    extraHttpRequestParams?: any
-  ): Observable<SuspendedItemResponse>;
 
   /**
    * Retrieves the suspended item using the passed in ID from the Suspended Items DB and creates the new adm record and updates the remaining records in the Jenzabar CX database

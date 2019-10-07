@@ -16,9 +16,9 @@ import { HttpClient, HttpHeaders, HttpParams, HttpResponse, HttpEvent, HttpParam
 import { CustomHttpParameterCodec } from '../encoder';
 import { Observable } from 'rxjs';
 
+import { ContactResponse } from '../model/contactResponse';
 import { FullSyncResponse } from '../model/fullSyncResponse';
 import { LogDetailResponse } from '../model/logDetailResponse';
-import { PersonalResponse } from '../model/personalResponse';
 import { SuspendedItemResponse } from '../model/suspendedItemResponse';
 
 import { BASE_PATH, COLLECTION_FORMATS } from '../variables';
@@ -177,17 +177,17 @@ export class AccessPortalService implements AccessPortalServiceInterface {
     contactId: string,
     observe?: 'body',
     reportProgress?: boolean
-  ): Observable<PersonalResponse>;
+  ): Observable<ContactResponse>;
   public accessPortalGetContactDetail(
     contactId: string,
     observe?: 'response',
     reportProgress?: boolean
-  ): Observable<HttpResponse<PersonalResponse>>;
+  ): Observable<HttpResponse<ContactResponse>>;
   public accessPortalGetContactDetail(
     contactId: string,
     observe?: 'events',
     reportProgress?: boolean
-  ): Observable<HttpEvent<PersonalResponse>>;
+  ): Observable<HttpEvent<ContactResponse>>;
   public accessPortalGetContactDetail(
     contactId: string,
     observe: any = 'body',
@@ -211,7 +211,7 @@ export class AccessPortalService implements AccessPortalServiceInterface {
       headers = headers.set('Accept', httpHeaderAcceptSelected);
     }
 
-    return this.httpClient.get<PersonalResponse>(`${this.configuration.basePath}/api/AccessPortal/GetContactDetail`, {
+    return this.httpClient.get<ContactResponse>(`${this.configuration.basePath}/api/AccessPortal/GetContactDetail`, {
       params: queryParameters,
       withCredentials: this.configuration.withCredentials,
       headers: headers,

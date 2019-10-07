@@ -185,7 +185,7 @@ export class JenzabarInt901Service implements JenzabarInt901ServiceInterface {
   }
 
   /**
-   * Initiates the creation of the AD file needed to generate student AD accounts
+   * Initiates the creation of the 901 Adds and Updates AD file needed to generate student AD accounts
    * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
    * @param reportProgress flag to report request and response progress.
    */
@@ -214,5 +214,40 @@ export class JenzabarInt901Service implements JenzabarInt901ServiceInterface {
       observe: observe,
       reportProgress: reportProgress
     });
+  }
+
+  /**
+   * Initiates the creation of the 901 Adds AD file needed to generate student AD accounts
+   * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+   * @param reportProgress flag to report request and response progress.
+   */
+  public jenzabarInt901JenInt901BeginAddsOnly(observe?: 'body', reportProgress?: boolean): Observable<FullSyncResponse>;
+  public jenzabarInt901JenInt901BeginAddsOnly(
+    observe?: 'response',
+    reportProgress?: boolean
+  ): Observable<HttpResponse<FullSyncResponse>>;
+  public jenzabarInt901JenInt901BeginAddsOnly(
+    observe?: 'events',
+    reportProgress?: boolean
+  ): Observable<HttpEvent<FullSyncResponse>>;
+  public jenzabarInt901JenInt901BeginAddsOnly(observe: any = 'body', reportProgress: boolean = false): Observable<any> {
+    let headers = this.defaultHeaders;
+
+    // to determine the Accept header
+    const httpHeaderAccepts: string[] = ['application/json', 'text/json', 'application/xml', 'text/xml'];
+    const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+    if (httpHeaderAcceptSelected !== undefined) {
+      headers = headers.set('Accept', httpHeaderAcceptSelected);
+    }
+
+    return this.httpClient.get<FullSyncResponse>(
+      `${this.configuration.basePath}/api/JenzabarInt901/JenInt901BeginAddsOnly`,
+      {
+        withCredentials: this.configuration.withCredentials,
+        headers: headers,
+        observe: observe,
+        reportProgress: reportProgress
+      }
+    );
   }
 }
